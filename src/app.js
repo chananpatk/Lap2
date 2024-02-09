@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 // Define a route for the root path ("/")
 app.get('/',(req, res) => {
-    res.send('Hello World!!!321');
+    res.send('Hello World!!!3210');
 });
 
 app.get('/test',(req ,res) => {
@@ -13,9 +13,10 @@ app.get('/test',(req ,res) => {
     res.send(output); 
  });
     
- app.get('/test/:id', (req, res) => {
+ app.get('/test/:id/:name', (req, res) => {
     const id = req.params.id;
-    res.send(`id: ${id}`);
+    const name = req.params.name;
+    res.send(`id: ${id} and name: ${name}`);
  });
 
 app.listen(3000, () => {
