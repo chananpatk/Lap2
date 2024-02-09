@@ -2,16 +2,14 @@ const express = require('express');
 const app = express();
 // Define a route for the root path ("/")
 app.get('/',(req, res) => {
-    res.send('Hello World!!!TEST1223444');
+    res.send('Hello World!!!');
 });
 
-app.get('/test',(req ,res) =>{
-    return0bj = {
-        name: 'Test',
-        age: 20,
-        address: 'Thai'
-    }
-    res.send(return0bj)
+app.get('/test',(req ,res) => {
+const id = req.query.id;
+
+const output = `id: ${id}` ;
+res.send(output); 
 });
 
 app.listen(3000, () => {
