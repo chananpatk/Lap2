@@ -1,10 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');  // เพิ่ม body-parser เข้ามา
 const app = express();
-
-//const events = ["event1", "event2", "event3"]; // ต้องกำหนด events ก่อน
 app.use(bodyParser.json());  // เรียกใช้ body-parser middleware เพื่อแปลงข้อมูลจาก JSON เป็น JavaScript object
-
 app.use(express.json());
 const events = [
     {
@@ -75,15 +72,25 @@ const events = [
     }
   ]
 //ข้อ 4
-app.get('/events', (req, res) => {
-    
+app.get('/events', (req, res) => {  
+    const name = req.query.name;
+    if (name) {
+        const event = events.filter(event => event.title === name);
+        if (!event) {   // ถ้าไม่มี event ให้ส่ง status 404 กลับไป
+            res.status(404).send('The event with the given name was not found'); // ส่ง status 404 กลับไป
+        } else {       // ถ้ามี event ให้ส่ง event กลับไป
+            res.send(event); 
+        }
+    } else {  // ถ้าไม่มี query string ให้ส่ง events ทั้งหมดกลับไป
+        res.send(events);
+    }
     res.send(events); 
 });
 
 //ข้อ 5
 app.get('/events/:id', (req, res) => {
     const id = req.params.id;
-    const event = events.find(event => event.id === parseInt(id));
+    const event = events.find(event => event.id === parseInt(id));  // === คือเท่ากันทั้งค่าและชนิดข้อมูล  เช็ค type ด้วย
     if (!event) {
         res.status(404).send('The even whith the given ID was not found');
     }   else {
