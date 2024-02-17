@@ -61,6 +61,15 @@ module.exports = {
       autoTimeStamp: true, // Add createdAt and updatedAt fields
       freezeTableName: true, // Prevent table name change to plural
     });
+    await queryInterface.addColumn('event', 'organizerId', {
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'organizer',
+        key: 'id'
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL'
+    });
   },
 
   async down (queryInterface, Sequelize) {
