@@ -41,4 +41,4 @@ const movies = [
   }
 ]
 
-module.exports = movies ;
+exports.events = movies ;
