@@ -67,5 +67,5 @@ const events = [
     }
   ]
 
-  module.exports = events;
+  exports.events = events;
   

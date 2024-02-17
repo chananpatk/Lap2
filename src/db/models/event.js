@@ -38,16 +38,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING
         // allowNull defaults to true
       }, 
-      createdAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
-      },
-      updatedAt: {
-       type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
-    },
+
     
     }, {
       freezeTableName: true, // Prevent table name change to plural

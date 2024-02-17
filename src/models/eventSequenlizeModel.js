@@ -19,7 +19,9 @@ exports.getEventById = (id) => {
 
 // Read (get all events)
 exports.getAllEvents = () => {
-    return event.findAll()
+    return event.findAll({
+        attributes: ['id', 'title', 'description']
+    })
         .then(events => events)
         .catch(error => console.error('Error getting events:', error));
 }

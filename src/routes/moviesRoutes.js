@@ -54,6 +54,7 @@ router.get('/movies/rating', (req, res) => {
     }
 });
 
+
 // Get by Title
 router.get('/movies/:title', (req, res) => {
     const title = req.params.title;

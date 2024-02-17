@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const eventModel = require('../models/eventPromiseModel');  
+const eventModel = require('../models/eventSequenlizeModel');  
 router.get('/', (req, res) => {  
     eventModel.getAllEvents()  
     .then(events => {  res.send(events);  })  
