@@ -45,7 +45,8 @@ module.exports = (sequelize, DataTypes) => {
       freezeTableName: true, // Prevent table name change to plural
       autoTimeStamp: true, // Add createdAt and updatedAt fields
     });
-    Event.belongsTo(Organizer, { as: 'organizer' });
-    Organizer.hasMany(Event, { as: 'events' });
+    Event.belongsTo(Organizer, { as: 'organizer' });  // ****  เป็นแบบ one to many คือ 1 คนจัดงาน สามารถจัดงานได้หลายงาน
+    Organizer.hasMany(Event, { as: 'events' }); // ****  เป็นแบบ one to many คือ 1 คนจัดงาน สามารถจัดงานได้หลายงาน
+    // เวลาอ้างอิงถึงกัน จะเป็น organizerId ใน event และ id ใน organizer
     return Event;
   }
